@@ -379,8 +379,9 @@ class semantic_segmentation():
 
 
 
-  def segmentAsAde20k(self, image_path, output_image_name=None,overlay=False, process_frame = False, verbose = None):            
+  def segmentAsAde20k(self, image_path, output_image_name=None,overlay=False, process_frame = False, verbose = None):
     trained_image_width=512
+    print("salam")
     mean_subtraction_value=127.5
     if process_frame == True:
       image = image_path
@@ -426,7 +427,7 @@ class semantic_segmentation():
     
     
     """ Convert indexed masks to boolean """
-    raw_labels = np.ma.make_mask(raw_labels)
+#     raw_labels = np.ma.make_mask(raw_labels)
     segvalues = {"class_ids":unique_labels,  "masks":raw_labels}   
    
     #Apply segmentation color map
@@ -443,7 +444,7 @@ class semantic_segmentation():
         cv2.imwrite(output_image_name, image_overlay)
         print("Processed Image saved successfully in your current working directory.")
 
-      return segvalues, image_overlay 
+      return segvalues, image_overlay ,labels
 
         
     else:  
@@ -453,7 +454,7 @@ class semantic_segmentation():
 
           print("Processed Image saved successfuly in your current working directory.")
 
-        return segvalues, new_img 
+        return segvalues, new_img ,labels
 
 
   def segmentFrameAsAde20k(self, frame, output_frame_name=None,overlay=False, verbose = None):  
