@@ -443,7 +443,7 @@ class semantic_segmentation():
         cv2.imwrite(output_image_name, image_overlay)
         print("Processed Image saved successfully in your current working directory.")
 
-      return segvalues, image_overlay 
+      return segvalues, image_overlay ,labels
 
         
     else:  
@@ -453,7 +453,7 @@ class semantic_segmentation():
 
           print("Processed Image saved successfuly in your current working directory.")
 
-        return segvalues, new_img 
+        return segvalues, new_img ,labels
 
 
   def segmentFrameAsAde20k(self, frame, output_frame_name=None,overlay=False, verbose = None):  
